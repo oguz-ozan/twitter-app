@@ -5,14 +5,8 @@
         </div>
         <div class="flex-1 lg:mx-10">
             @include('_publish-tweet')
-            
             <div class="border border-gray-300 rounded-lg">
-            @include('_tweet')
-            @include('_tweet')
-            @include('_tweet')
-            @include('_tweet')
-            @include('_tweet')
-                
+            @include('_timeline')
             </div>
                 
         </div>

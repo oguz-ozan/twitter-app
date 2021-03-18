@@ -1,15 +1,15 @@
-<h3 class="font-bold text-xl mb-4">Friends</h3>
+<h3 class="font-bold text-xl mb-4">Following</h3>
     <ul>
-        @foreach (range(1,8) as $index)
+        @foreach (auth()->user()->follows as $user)
         <li class="mb-4">
             <div class="flex items-center text-sm">
                 <img 
-                src="https://i.pravatar.cc/30" 
+                src={{  $user->getAvatarAttribute() }} 
                 alt=""
                 class="mr-2 rounded-full">
-                Osman Özan
+                
             </div>
-
+            <div>{{ $user->name }}</div>
         </li>    
         @endforeach
         
