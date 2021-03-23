@@ -13,4 +13,11 @@ class ProfileController extends Controller
         return view('profiles.show', ['user'=>$user]);
 
     }
+
+    public function follow(User $user){
+
+        auth()->user()->toggle_follow($user);
+            
+        return redirect()->back();
+    }
 }

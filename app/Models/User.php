@@ -64,13 +64,37 @@ class User extends Authenticatable
         return $this->follows()->save($user);
     }
 
-    public function tweets()
-    {
-        return $this->hasMany(Tweet::class);
+    public function is_following(User $user){
+
+        return $this->follows()->where('following_user_id', $user->id)->exists();
     }
 
-    public function getRouteKeyName()
-    {
-        return ('name');
+    public function toggle_follow(User $user){
+
+        if($this->is_following($user)){
+           
+            $this->unfollow($user);
+ 
+        }
+        else{
+
+            $this->follow($user);
+        }
     }
+
+    public function unfollow(User $user){
+        
+        return $this->follows()->detach($user);
+
+    }
+
+    public function tweets()
+    {
+        return $this->hasMany(Tweet::class)->latest();
+    }
+
+    // public function getRouteKeyName()
+    // {
+    //     return ('name');
+    // }
 }

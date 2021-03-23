@@ -1,4 +1,4 @@
-<x-app-layout>
+<x-app>
     
     
     <div class="flex justify-between items-center relative mb-6">
@@ -8,7 +8,8 @@
        </div>
        <div>
         <a href="" class="rounded-full shadow py-4 px-2 text-black text-xs">Edit Profile</a>
-        <a href="" class="bg-blue-500 rounded-full shadow py-4 px-2 text-white text-xs">Follow Me</a>
+
+        <x-follow-button :user="$user"></x-follow-button>
        </div>
     </div>
 
@@ -28,4 +29,4 @@
     @include('_timeline', [
         'tweets' => $user->tweets
     ])
-</x-app-layout>
+</x-app>
