@@ -12,7 +12,7 @@ class TweetController extends Controller
             'body' => 'required|max:255'
         ]);
 
-        dd(strip_tags(request('body')));
+        // dd(strip_tags(request('body')));
 
         Tweet::create([
             'user_id' => auth()->id(),
@@ -25,6 +25,6 @@ class TweetController extends Controller
     public function index(){
         // $var = htmlspecialchars("<p>adasd</p>");
         // dd($var);
-        return view('dashboard', ['tweets' => auth()->user()->timeline()]);
+        return view('tweet.index', ['tweets' => auth()->user()->timeline()]);
     }
 }

@@ -1,6 +1,10 @@
 <?php
 
+// DB dinleme komutu
+// DB::listen(function ($query) { var_dump($query->sql, $query->bindings);});
+
 use Illuminate\Support\Facades\Route;
+use Symfony\Component\HttpKernel\Profiler\Profile;
 
 /*
 |--------------------------------------------------------------------------
@@ -22,5 +26,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/tweets', 'TweetController@index')->name('home');
     Route::post('/tweets', 'TweetController@store');
 });
+
+Route::get('/profile/{user}', 'ProfileController@show')->name('profile');
 
 require __DIR__ . '/auth.php';

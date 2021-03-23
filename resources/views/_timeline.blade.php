@@ -1,14 +1,21 @@
-@foreach ($tweets as $tweet)
+@forelse ($tweets as $tweet)
 <div class="flex p-4 border-b border-b-gray-300">
     <div class="mr-2">
-        <img 
+        <a href="{{ route('profile', $tweet->user->name) }}"><img 
         src={{ $tweet->user->getAvatarAttribute() }}
         alt=""
-        class="mr-2 rounded-full">
+        class="mr-2 rounded-full"></a>
     </div>
     <div>
-        <h5 class="font-bold mb-4">{{ $tweet->user->name }}</h5>
+        <h5 class="font-bold mb-4">
+            <a href="{{ route('profile', $tweet->user->name) }}">
+                {{ $tweet->user->name }}
+            </a>
+            </h5>
         <p class="text-sm">{!! $tweet->body !!}</p>
     </div>
 </div>
-@endforeach
+@empty
+<p>No Tweets Found.</p>
+
+@endforelse
