@@ -1,4 +1,5 @@
-@forelse ($tweets as $tweet)
+<div class="border border-gray-300 rounded-lg">
+    @forelse ($tweets as $tweet)
 <div class="flex p-4 border-b border-b-gray-300">
     <div class="mr-2">
         <a href="{{ route('profile', $tweet->user->name) }}"><img 
@@ -19,3 +20,4 @@
 <p>No Tweets Found.</p>
 
 @endforelse
+</div>
