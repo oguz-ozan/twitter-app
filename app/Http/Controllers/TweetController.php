@@ -25,6 +25,6 @@ class TweetController extends Controller
     public function index(){
         // $var = htmlspecialchars("<p>adasd</p>");
         // dd($var);
-        return view('tweet.index', ['tweets' => auth()->user()->timeline()]);
+        return view('tweet.index', ['tweets' => current_user()->timeline()]);
     }
 }

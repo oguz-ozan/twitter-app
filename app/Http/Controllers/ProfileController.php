@@ -16,8 +16,17 @@ class ProfileController extends Controller
 
     public function follow(User $user){
 
-        auth()->user()->toggle_follow($user);
+        current_user()->toggle_follow($user);
             
         return redirect()->back();
+    }
+
+    public function edit(User $user){
+
+        // authorization in controller. but we did already in web.php
+        // $this->authorize('edit', $user);
+
+        return view('profiles.edit', ['user'=>$user]);            
+
     }
 }

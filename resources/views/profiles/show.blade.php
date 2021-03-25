@@ -7,7 +7,9 @@
             <p class="text-sm">Joined {{ $user->created_at->diffForHumans() }}</p>
        </div>
        <div>
-        <a href="" class="rounded-full shadow py-4 px-2 text-black text-xs">Edit Profile</a>
+           @can('edit', $user)
+           <a href="{{ route('edit_profile', $user) }}" class="rounded-full shadow py-4 px-2 text-black text-xs">Edit Profile</a>
+           @endcan
 
         <x-follow-button :user="$user"></x-follow-button>
        </div>

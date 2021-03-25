@@ -25,9 +25,10 @@ Route::get('/', function () {
 Route::middleware('auth')->group(function () {
     Route::get('/tweets', 'TweetController@index')->name('home');
     Route::post('/tweets', 'TweetController@store');
-    Route::post('/follow/{user:name}', 'ProfileController@follow')->name('toggle_follow');
+    Route::post('/follow/{user:username}', 'ProfileController@follow')->name('toggle_follow');
+    Route::get('/profile/{user:username}/edit', 'ProfileController@edit')->name('edit_profile')->middleware('can:edit,user');
 });
 
-Route::get('/profile/{user:name}', 'ProfileController@show')->name('profile');
+Route::get('/profile/{user:username}', 'ProfileController@show')->name('profile');
 
 require __DIR__ . '/auth.php';
