@@ -3,7 +3,7 @@
 <div class="flex p-4 border-b border-b-gray-300">
     <div class="mr-2">
         <a href="{{ current_user()->path() }}"><img 
-        src={{ $tweet->user->getAvatarAttribute() }}
+        src={{ $tweet->user->avatar }}
         alt=""
         class="mr-2 rounded-full"></a>
     </div>

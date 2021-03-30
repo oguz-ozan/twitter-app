@@ -21,7 +21,7 @@
     </p>
 
     <img 
-        src={{ $user->getAvatarAttribute() }}
+        src={{ $user->avatar }}
         alt=""
         class="mr-2 rounded-full absolute"
         style="width: 100px; left: calc(50% - 75px); top:3%">
