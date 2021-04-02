@@ -82,4 +82,17 @@ class UserController extends Controller
     {
         //
     }
+
+    /**
+     * Explore users.
+     *
+     * @param  \App\Models\User  $user
+     * @return \Illuminate\Http\Response
+     */
+    public function explore(User $user)
+    {
+        $users = User::where('id','!=', current_user()->id)->paginate(3);
+
+        return view('profiles.explore', ['users' => $users]);
+    }
 }

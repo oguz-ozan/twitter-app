@@ -2,17 +2,21 @@
     @forelse ($tweets as $tweet)
 <div class="flex p-4 border-b border-b-gray-300">
     <div class="mr-2">
-        <a href="{{ current_user()->path() }}"><img 
+        <a href="{{ $tweet->user->path() }}"><img 
         src={{ $tweet->user->avatar }}
         alt=""
-        class="mr-2 rounded-full"></a>
+        class="mr-2 rounded-full"
+        width="50px"
+        height="50px"></a>
     </div>
     <div>
         <h5 class="font-bold mb-4">
-            <a href="{{ current_user()->path() }}">
+            <a href="{{ $tweet->user->path() }}">
                 {{ $tweet->user->name }}
             </a>
-            </h5>
+            <span class="font-italic"> {{ '@' . $tweet->user->username }} </span>
+            <p class="float-right">{{ $tweet->user->created_at->diffForHumans() }}</p>
+        </h5>
         <p class="text-sm">{!! $tweet->body !!}</p>
     </div>
 </div>
